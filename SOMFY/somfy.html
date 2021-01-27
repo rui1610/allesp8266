@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>SOMFY</title>
+  <meta name='description' content='RICARDO Lego Computer'>
+  <meta name='author' content='Rui Nogueira'>
+  <style>
+
+body{ 
+    background-color: rgba(255,255,255,0.6);
+    background-blend-mode:lighten;
+}
+h1 {text-align: center; }
+tr {
+  background-color: rgba(255,255,255,0.6);
+}
+
+td {
+  font-family:Arial;
+  font-size:30px;
+  text-align: center;
+}
+th {
+  font-family:Arial;
+  font-size:30px;
+  text-align: center;
+  font-weight:bold;
+}
+.myButton {
+  border-radius:8px;
+  display:inline-block;
+  cursor:pointer;
+  font-family:Arial;
+  font-size:30px;
+  text-align: center;
+  font-weight:bold;
+  padding:6px 24px;
+  text-decoration:none;
+  width:100px;
+  box-shadow:inset 0px 1px 0px 0px #54a3f7;
+  background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+  background-color:#007dc1;
+  color:#ffffff;
+  text-shadow:0px 1px 0px #154682;  
+}
+
+.myButton:hover {
+  background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+  background-color:#0061a7;
+}
+
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+  
+/* The slider itself */
+.slider {
+-webkit-appearance: none;  /* Override default CSS styles */
+appearance: none;
+width: 100%; /* Full-width */
+height: 50px; /* Specified height */
+background: #d3d3d3; /* Grey background */
+outline: none; /* Remove outline */
+opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+-webkit-transition: .2s; /* 0.2 seconds transition on hover */
+transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+-webkit-appearance: none; /* Override default look */
+appearance: none;
+width: 50px; /* Set a specific slider handle width */
+height: 50px; /* Slider handle height */
+background: #4CAF50; /* Green background */
+cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+width: 25px; /* Set a specific slider handle width */
+height: 25px; /* Slider handle height */
+background: #4CAF50; /* Green background */
+cursor: pointer; /* Cursor on hover */
+}
+
+.switch {
+position: relative;
+display: block;
+vertical-align: top;
+width: 100px;
+height: 30px;
+padding: 3px;
+margin: 0 10px 10px 0;
+background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
+background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
+border-radius: 18px;
+box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
+cursor: pointer;
+box-sizing:content-box;
+}
+
+.switch-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  box-sizing:content-box;
+}
+.switch-label {
+  position: relative;
+  display: block;
+  height: inherit;
+  font-size: 10px;
+  text-transform: uppercase;
+  background: #eceeef;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+  box-sizing:content-box;
+}
+.switch-label:before, .switch-label:after {
+  position: absolute;
+  top: 50%;
+  margin-top: -.5em;
+  line-height: 1;
+  -webkit-transition: inherit;
+  -moz-transition: inherit;
+  -o-transition: inherit;
+  transition: inherit;
+  box-sizing:content-box;
+}
+.switch-label:before {
+  content: attr(data-off);
+  right: 11px;
+  color: #aaaaaa;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+}
+.switch-label:after {
+  content: attr(data-on);
+  left: 11px;
+  color: #FFFFFF;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+}
+.switch-input:checked ~ .switch-label {
+  background: #E1B42B;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
+}
+.switch-input:checked ~ .switch-label:before {
+  opacity: 0;
+}
+.switch-input:checked ~ .switch-label:after {
+  opacity: 1;
+}
+.switch-handle {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+  background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+  border-radius: 100%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+.switch-handle:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -6px 0 0 -6px;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
+  background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
+  border-radius: 6px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
+}
+.switch-input:checked ~ .switch-handle {
+  left: 74px;
+  box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Transition
+========================== */
+.switch-label, .switch-handle {
+  transition: All 0.2s ease;
+  -webkit-transition: All 0.2s ease;
+  -moz-transition: All 0.2s ease;
+  -o-transition: All 0.2s ease;
+}
+    </style>
+
+</head>
+
+<body>
+  <script>
+    function clicked(item) {
+      var link = item.attributes.link.value;
+      var typ = item.attributes.typ.value;
+      var pin = item.attributes.pin.value;
+
+      var wert;
+      if (typ == "digital"){
+        if (item.checked == true){
+          wert = 1;
+        }
+        if (item.checked == false){
+          wert = 0;
+        }
+      }
+      if (typ == "analog"){
+        wert = item.value;
+      }
+      if (typ == "feuer"){
+        wert = 0;
+      }
+      sendCommand(link,pin,wert,typ);
+    }
+      
+    function sendCommand(link,pin,wert,typ) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          //alert(this.responseText);
+        }
+      };
+
+      var jsonString = "{'pin':" + pin + ", 'typ':'" +  typ +  "', 'wert':" + wert + "}";
+      link = '/' +link;
+
+      xhttp.open('PUT', link, true);
+      xhttp.setRequestHeader('Content-type', 'application/json');
+      xhttp.send(jsonString);
+    }
+  </script>
+<h1>SOMFY COMMANDS</h1>
+<table border = "1">
+    <tbody>
+      <tr>
+        <th>Remote</th>
+        <th>Programmierung</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>
+          <div class='myButton' command='UP' remote='1' onclick='clicked(this);' >UP</div>
+          <div class='myButton' command='DOWN' remote='1' onclick='clicked(this);' >DOWN</div>
+          <div class='myButton' command='STOP' remote='1' onclick='clicked(this);' >STOP</div>
+          <div class='myButton' command='PROG' remote='1' onclick='clicked(this);' >PROG</div>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>
+          <div class='myButton' command='UP' remote='2' onclick='clicked(this);' >UP</div>
+          <div class='myButton' command='DOWN' remote='2' onclick='clicked(this);' >DOWN</div>
+          <div class='myButton' command='STOP' remote='2' onclick='clicked(this);' >STOP</div>
+          <div class='myButton' command='PROG' remote='2' onclick='clicked(this);' >PROG</div>
+        </td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>
+          <div class='myButton' command='UP' remote='3' onclick='clicked(this);' >UP</div>
+          <div class='myButton' command='DOWN' remote='3' onclick='clicked(this);' >DOWN</div>
+          <div class='myButton' command='STOP' remote='3' onclick='clicked(this);' >STOP</div>
+          <div class='myButton' command='PROG' remote='3' onclick='clicked(this);' >PROG</div>
+        </td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>
+          <div class='myButton' command='UP' remote='4' onclick='clicked(this);' >UP</div>
+          <div class='myButton' command='DOWN' remote='4' onclick='clicked(this);' >DOWN</div>
+          <div class='myButton' command='STOP' remote='4' onclick='clicked(this);' >STOP</div>
+          <div class='myButton' command='PROG' remote='4' onclick='clicked(this);' >PROG</div>
+        </td>
+      </tr>      
+      <tr>
+        <td>5</td>
+        <td>
+          <div class='myButton' command='UP' remote='5' onclick='clicked(this);' >UP</div>
+          <div class='myButton' command='DOWN' remote='5' onclick='clicked(this);' >DOWN</div>
+          <div class='myButton' command='STOP' remote='5' onclick='clicked(this);' >STOP</div>
+          <div class='myButton' command='PROG' remote='5' onclick='clicked(this);' >PROG</div>
+        </td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>
+          <div class='myButton' command='UP' remote='6' onclick='clicked(this);' >UP</div>
+          <div class='myButton' command='DOWN' remote='6' onclick='clicked(this);' >DOWN</div>
+          <div class='myButton' command='STOP' remote='6' onclick='clicked(this);' >STOP</div>
+          <div class='myButton' command='PROG' remote='6' onclick='clicked(this);' >PROG</div>
+        </td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>
+          <div class='myButton' command='UP' remote='7' onclick='clicked(this);' >UP</div>
+          <div class='myButton' command='DOWN' remote='7' onclick='clicked(this);' >DOWN</div>
+          <div class='myButton' command='STOP' remote='7' onclick='clicked(this);' >STOP</div>
+          <div class='myButton' command='PROG' remote='7' onclick='clicked(this);' >PROG</div>
+        </td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>
+          <div class='myButton' command='UP' remote='8' onclick='clicked(this);' >UP</div>
+          <div class='myButton' command='DOWN' remote='8' onclick='clicked(this);' >DOWN</div>
+          <div class='myButton' command='STOP' remote='8' onclick='clicked(this);' >STOP</div>
+          <div class='myButton' command='PROG' remote='8' onclick='clicked(this);' >PROG</div>
+        </td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>
+          <div class='myButton' command='UP' remote='9' onclick='clicked(this);' >UP</div>
+          <div class='myButton' command='DOWN' remote='9' onclick='clicked(this);' >DOWN</div>
+          <div class='myButton' command='STOP' remote='9' onclick='clicked(this);' >STOP</div>
+          <div class='myButton' command='PROG' remote='9' onclick='clicked(this);' >PROG</div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</body>
+</html>

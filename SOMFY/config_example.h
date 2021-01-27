@@ -1,0 +1,2 @@
+#define WIFI_SSD "YOUR SSID";
+#define WIFI_PASSWD "YOUR PASSWORD";
