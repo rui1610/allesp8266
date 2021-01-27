@@ -13,7 +13,7 @@
 
 **Software**
 
-- The WS2812FX Arduino library
+- The [WS2812FX Arduino library](https://github.com/kitesurfer1404/WS2812FX)
 
 And most importantly: a lot of patience to make all the pieces fit together :-)
 
